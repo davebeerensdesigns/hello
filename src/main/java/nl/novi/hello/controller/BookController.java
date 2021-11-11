@@ -1,6 +1,8 @@
 package nl.novi.hello.controller;
 
 import nl.novi.hello.model.Book;
+import nl.novi.hello.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -27,14 +29,17 @@ public class BookController {
         books.add(book2);
     }
 
+    @Autowired
+    private BookRepository bookRepository;
+
     @GetMapping(value = "/books")
     public ResponseEntity<Object> getBooks(){
-        return ResponseEntity.ok(books); // Jackson package - object => json
+        return ResponseEntity.ok(bookRepository.findAll()); // Jackson package - object => json
     }
 
     @GetMapping(value = "/books/{id}")
     public ResponseEntity<Object> getBook(@PathVariable("id") int id){
-        return ResponseEntity.ok(books.get(id)); // Jackson package - object => json
+        return ResponseEntity.ok(bookRepository.findById(id)); // Jackson package - object => json
     }
 
     @DeleteMapping(value = "/books/{id}")

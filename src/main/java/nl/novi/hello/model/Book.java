@@ -1,8 +1,16 @@
 package nl.novi.hello.model;
 
+import javax.persistence.*; // JPA
+
+@Entity
+@Table(name = "books")
 public class Book {
 
     // attributes
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private String title;
     private String Author;
@@ -12,6 +20,14 @@ public class Book {
 
 
     // setters and getters
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
