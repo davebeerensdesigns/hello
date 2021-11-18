@@ -13,10 +13,25 @@ public class Book {
     private int id;
 
     private String title;
-    private String Author;
+    private String author;
     private String isbn;
 
-    // constructor is not necessary
+    // constructor is not necessary when using springboot (JPA)
+
+//    public Book() {
+//    }
+//
+//    public Book(String title, String author, String isbn) {
+//        this.title = title;
+//        this.author = author;
+//        this.isbn = isbn;
+//    }
+//    public Book(int id, String title, String author, String isbn) {
+//        this.id = id;
+//        this.title = title;
+//        this.author = author;
+//        this.isbn = isbn;
+//    }
 
 
     // setters and getters
@@ -38,11 +53,11 @@ public class Book {
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        Author = author;
+        this.author = author;
     }
 
     public String getIsbn() {
